@@ -2,30 +2,20 @@ import React, { useState, useEffect } from "react";
 import { useCart } from "../../context/CartContext";
 import { GrFavorite } from "react-icons/gr";
 import { MdDeleteForever } from "react-icons/md";
+import { useFavorite } from "../../context/FavoriteContext"; // Импортируем контекст избранного
 
 export const YourCart = () => {
   const {
     cart,
     removeFromCart,
-    addToFavorites,
-    decreaseQuantity,
-    increaseQuantity,
-    removeFromFavorites,
-    favorites,
   } = useCart();
+  
+  const { addToFavorites, removeFromFavorites, favorites } = useFavorite(); // Получаем функции и список избранных из контекста избранного
 
   const [totalPrice, setTotalPrice] = useState(0);
 
   const handleRemoveFromCart = (id) => {
     removeFromCart(id);
-  };
-
-  const handleDecreaseQuantity = (id) => {
-    decreaseQuantity(id);
-  };
-
-  const handleIncreaseQuantity = (id) => {
-    increaseQuantity(id);
   };
 
   useEffect(() => {
@@ -36,10 +26,13 @@ export const YourCart = () => {
     setTotalPrice(total);
   }, [cart]);
 
+  // Функция для обработки добавления в избранное
   const handleAddToFavorites = (item) => {
-    if (favorites && favorites.find((favorite) => favorite.id === item.id)) {
+    if (favorites.some((favorite) => favorite.id === item.id)) {
+      // Если товар уже в избранном, удаляем его
       removeFromFavorites(item.id);
     } else {
+      // Если товар не в избранном, добавляем его
       addToFavorites(item);
     }
   };
@@ -60,7 +53,7 @@ export const YourCart = () => {
                   <p>{item.description}</p>
                   <div className="cart__btns">
                     <button
-                      className="cart__btn"
+                      className="cart__btn__like"
                       onClick={() => handleAddToFavorites(item)}
                     >
                       <GrFavorite />
@@ -76,7 +69,7 @@ export const YourCart = () => {
               </li>
             ))}
           </ul>
-          <div className={`total ${cart.length === 0 ? 'empty' : ''}`}>
+          <div className={`total ${cart.length === 0 ? "empty" : ""}`}>
             <div className="adres">
               <p>Summary</p>
 
