@@ -26,13 +26,10 @@ export const YourCart = () => {
     setTotalPrice(total);
   }, [cart]);
 
-  // Функция для обработки добавления в избранное
   const handleAddToFavorites = (item) => {
     if (favorites.some((favorite) => favorite.id === item.id)) {
-      // Если товар уже в избранном, удаляем его
       removeFromFavorites(item.id);
     } else {
-      // Если товар не в избранном, добавляем его
       addToFavorites(item);
     }
   };

@@ -86,7 +86,6 @@ const Card = () => {
         [id]: true,
       }));
 
-      // Если кнопка уже активна (была нажата ранее), удаляем элемент из localStorage
       if (activeButtons[id]) {
         const updatedCart = cart.filter((item) => item.id !== id);
         localStorage.setItem("cart", JSON.stringify(updatedCart));
@@ -108,6 +107,13 @@ const Card = () => {
     } else {
       addToFavorites(datas.find((item) => item.id === id));
     }
+  };
+
+  const handleButtonClick = (id) => {
+    setActiveButtons((prevActiveButtons) => ({
+      ...prevActiveButtons,
+      [id]: !prevActiveButtons[id],
+    }));
   };
 
   return (
@@ -169,16 +175,27 @@ const Card = () => {
                           favorites.some((favorite) => favorite.id === item.id)
                             ? "active"
                             : ""
-                        }`}
-                        onClick={() => handleAddRemoveFavorite(item.id)}
+                        } ${activeButtons[item.id] ? "active" : ""}`}
+                        onClick={() => {
+                          handleAddRemoveFavorite(item.id);
+                          handleButtonClick(item.id);
+                        }}
+                        onMouseEnter={() => handleButtonClick(item.id)}
+                        onMouseLeave={() => handleButtonClick(item.id)}
                       >
                         <GrFavorite />
                       </button>
                       <button
+                      
                         className={`card__btn2 ${
                           activeButtons[item.id] ? "active" : ""
                         }`}
-                        onClick={() => handleCartButtonClick(item.id)}
+                        onClick={() => {
+                          handleCartButtonClick(item.id);
+                          handleButtonClick(item.id);
+                        }}
+                        onMouseEnter={() => handleButtonClick(item.id)}
+                        onMouseLeave={() => handleButtonClick(item.id)}
                       >
                         <BiSolidCartDownload />
                       </button>

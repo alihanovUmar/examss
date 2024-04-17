@@ -4,22 +4,29 @@ import { MdDeleteForever } from "react-icons/md";
 import { useCart } from "../../context/CartContext";
 
 export const Favorites = () => {
-  const { favorites, removeFromFavorites } = useFavorite();
-  const { cart, addToCart, removeFromCart } = useCart(); // Добавлены методы removeFromCart и cart
+  const { favorites, removeFromFavorites, addToFavorites } = useFavorite();
+  const { cart, addToCart, removeFromCart } = useCart();
 
   const handleRemoveFromFavorites = (id) => {
     removeFromFavorites(id);
   };
 
   const handleAddToCart = (item) => {
-    // Проверяем, есть ли элемент уже в корзине
     const itemIndex = cart.findIndex((cartItem) => cartItem.id === item.id);
 
-    // Если элемент уже в корзине, удаляем его из корзины
     if (itemIndex !== -1) {
       removeFromCart(item.id);
     } else {
       addToCart(item);
+    }
+  };
+
+  const handleToggleFavorite = (item) => {
+    const isFavorite = favorites.some((favoriteItem) => favoriteItem.id === item.id);
+    if (isFavorite) {
+      removeFromFavorites(item.id);
+    } else {
+      addToFavorites(item);
     }
   };
 

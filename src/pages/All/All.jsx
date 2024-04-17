@@ -7,12 +7,18 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import { Search } from "../Home/Search/Search";
 import loadingImg from "../../assets/images/loading.svg";
 import No from "../../assets/images/No results.jpg";
+import { useFavorite } from "../../context/FavoriteContext";
 
 export const All = () => {
-  const { datas, setDatas } = useStore((state) => ({
-    datas: state.datas,
-    setDatas: state.setDatas,
-  }));
+  const { favorites, removeFromFavorites, setFavorites: updateFavorites } = useFavorite();
+  const { datas, setDatas, cart, setCart } = useStore(
+    (state) => ({
+      datas: state.datas,
+      setDatas: state.setDatas,
+      cart: state.cart,
+      setCart: state.setCart,
+    })
+  );
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState([]);
   const [search, setSearch] = useState("");
@@ -35,7 +41,9 @@ export const All = () => {
   useEffect(() => {
     let filteredData = datas;
     if (selectedCategory) {
-      filteredData = filteredData.filter((item) => item.category === selectedCategory);
+      filteredData = filteredData.filter(
+        (item) => item.category === selectedCategory
+      );
     }
     if (search.trim() !== "") {
       filteredData = filteredData.filter((item) =>
@@ -51,6 +59,21 @@ export const All = () => {
 
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
+  };
+
+  const addToFavorites = (item) => {
+    if (!favorites.some(favoriteItem => favoriteItem.id === item.id)) {
+      updateFavorites([...favorites, item]);
+    }
+  };
+
+  const removeFromFavoritesFunction = (id) => {
+    const updatedFavorites = favorites.filter((item) => item.id !== id);
+    updateFavorites(updatedFavorites);
+  };
+
+  const addToCart = (item) => {
+    setCart([...cart, item]);
   };
 
   return (
@@ -90,10 +113,26 @@ export const All = () => {
                   <p className="all__description">{item.description}</p>
                   <p className="all__price">{item.price}</p>
                   <div className="all__btns">
-                    <button className="all__btn1">
+                    <button
+                      className="all__btn1"
+                      onClick={() => {
+                        const isFavorite = favorites.some(
+                          (favoriteItem) => favoriteItem.id === item.id
+                        );
+                        if (isFavorite) {
+                          removeFromFavoritesFunction(item.id);
+                        } else {
+                          addToFavorites(item);
+                        }
+                      }}
+                    >
                       <GrFavorite />
                     </button>
-                    <button className="all__btn2">
+
+                    <button
+                      className="all__btn2"
+                      onClick={() => addToCart(item)}
+                    >
                       <BiSolidCartDownload />
                     </button>
                   </div>

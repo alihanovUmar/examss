@@ -1,0 +1,58 @@
+.adminka {
+  width: 100%;
+  background: rgb(228, 228, 228);
+  background: linear-gradient(
+    349deg,
+    rgba(228, 228, 228, 1) 40%,
+    rgba(174, 174, 174, 0.818) 60%
+  );
+  box-shadow: 0px 0px 15px 2px
+    linear-gradient(
+      349deg,
+      rgba(0, 0, 0, 0.8183648459383753) 40%,
+      rgba(228, 228, 228, 1) 60%
+    )
+    inset;
+  overflow: hidden;
+
+  .adminka__left__right {
+    .adminka__left {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      gap: 20px;
+      width: 230px;
+      padding: 5px;
+      box-sizing: border-box;
+      border: 2px solid rgba(0, 0, 0, 0.05);
+      border-radius: 20px;
+      background: #f0f8ff;
+      .info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .profil__name {
+          color: rgb(0, 0, 0);
+          font-family: Inter;
+          font-size: 17px;
+          font-weight: 700;
+          line-height: 24px;
+          letter-spacing: 0%;
+          text-align: left;
+        }
+      }
+
+      .adminka__profil {
+        width: 50px;
+        height: 50px;
+        background: #000;
+        border-radius: 50%;
+      }
+    }
+    .adminka__right {
+    
+   
+    }
+  }
+}

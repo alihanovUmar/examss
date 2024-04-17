@@ -5,7 +5,7 @@ import loginImg from "../../../assets/images/login.png";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [token, setToken] = useState(localStorage.getItem("tok  en") || "");
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [loginStatus, setLoginStatus] = useState("");
 
   const handleFormSubmit = async (event) => {
@@ -28,7 +28,7 @@ const Login = () => {
       if (response.ok) {
         if (data.token) {
           setToken(data.token);
-          localStorage.setItem("token", data.token); 
+          localStorage.setItem("token", data.token);
           setLoginStatus("Login");
         } else {
           setLoginStatus("Token");
@@ -44,7 +44,7 @@ const Login = () => {
 
   useEffect(() => {
     if (token) {
-      localStorage.setItem("token", token); 
+      localStorage.setItem("token", token);
     }
   }, [token]);
 
