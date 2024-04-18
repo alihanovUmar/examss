@@ -22,20 +22,20 @@ export const Favorites = () => {
     }
   };
 
-  const handleToggleFavorite = (item) => {
-    const isFavorite = favorites.some(
-      (favoriteItem) => favoriteItem.id === item.id
-    );
-    if (isFavorite) {
+  const handleRemoveAllFavorites = () => {
+    favorites.forEach((item) => {
       removeFromFavorites(item.id);
-    } else {
-      addToFavorites(item);
-    }
+    });
   };
 
   return (
     <section>
       <div className="container">
+        <div className="cart__btns">
+          <button className="cart__btn" onClick={handleRemoveAllFavorites}>
+            Remove All
+          </button>
+        </div>
         <div className="cart__left__right">
           <ul className="cart__left">
             {favorites.map((item) => (

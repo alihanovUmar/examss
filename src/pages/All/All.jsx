@@ -11,14 +11,12 @@ import { useFavorite } from "../../context/FavoriteContext";
 
 export const All = () => {
   const { favorites, setFavorites: updateFavorites } = useFavorite();
-  const { datas, setDatas, cart, setCart } = useStore(
-    (state) => ({
-      datas: state.datas,
-      setDatas: state.setDatas,
-      cart: state.cart,
-      setCart: state.setCart,
-    })
-  );
+  const { datas, setDatas, cart, setCart } = useStore((state) => ({
+    datas: state.datas,
+    setDatas: state.setDatas,
+    cart: state.cart,
+    setCart: state.setCart,
+  }));
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState([]);
   const [search, setSearch] = useState("");
@@ -33,7 +31,7 @@ export const All = () => {
         setLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        console.error("Error:", error);
         setLoading(false);
       });
   }, [setDatas]);
@@ -62,7 +60,7 @@ export const All = () => {
   };
 
   const addToFavorites = (item) => {
-    if (!favorites.some(favoriteItem => favoriteItem.id === item.id)) {
+    if (!favorites.some((favoriteItem) => favoriteItem.id === item.id)) {
       updateFavorites([...favorites, item]);
     }
   };
@@ -115,16 +113,7 @@ export const All = () => {
                   <div className="all__btns">
                     <button
                       className="all__btn1"
-                      onClick={() => {
-                        const isFavorite = favorites.some(
-                          (favoriteItem) => favoriteItem.id === item.id
-                        );
-                        if (isFavorite) {
-                          removeFromFavoritesFunction(item.id);
-                        } else {
-                          addToFavorites(item);
-                        }
-                      }}
+                      onClick={() => addToFavorites(item)}
                     >
                       <GrFavorite />
                     </button>

@@ -244,29 +244,7 @@ export const Adminka = () => {
                   <p className="all__description">{item.description}</p>
                   <p className="all__price">{item.price}</p>
                   <div className="all__btns">
-                    <button
-                      className="all__btn1"
-                      onClick={() => {
-                        const isFavorite = favorites.some(
-                          (favoriteItem) => favoriteItem.id === item.id
-                        );
-                        if (isFavorite) {
-                          removeFromFavoritesFunction(item.id);
-                        } else {
-                          addToFavorites(item);
-                        }
-                      }}
-                    >
-                      <GrFavorite />
-                    </button>
-
-                    <button
-                      className="all__btn2"
-                      onClick={() => addToCart(item)}
-                    >
-                      <BiSolidCartDownload />
-                    </button>
-
+                   
                     <button
                       className="all__btn2"
                       onClick={() => deleteProduct(item.id)}

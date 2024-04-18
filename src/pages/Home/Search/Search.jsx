@@ -8,6 +8,11 @@ export const Search = ({ setInputVal }) => {
     }
   };
 
+  const buttonHandle = () => {
+    const inputVal = document.querySelector(".search__input").value;
+    setInputVal(inputVal);
+  };
+
   return (
     <section className="search">
       <div className="container">
@@ -18,7 +23,7 @@ export const Search = ({ setInputVal }) => {
             placeholder="Search for products"
             onKeyUp={inputHandle}
           />
-          <button className="search__btn">
+          <button className="search__btn" onClick={buttonHandle}>
             <TfiSearch />
           </button>
         </center>

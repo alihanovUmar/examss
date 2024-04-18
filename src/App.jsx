@@ -19,7 +19,7 @@ function App() {
         <Route path="/all" element={<All />} />
         <Route path="/favorite" element={<Favorites />} />
         <Route path="/yourcrad" element={<YourCart />} />
-        <Route path="/product/:id" component={<Single/>} />
+        <Route path="/single/:id" component={<Single/>} />
       </Routes>
       <Footer />
     </div>

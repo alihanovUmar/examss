@@ -2,20 +2,25 @@ import React, { useState, useEffect } from "react";
 import { useCart } from "../../context/CartContext";
 import { GrFavorite } from "react-icons/gr";
 import { MdDeleteForever } from "react-icons/md";
-import { useFavorite } from "../../context/FavoriteContext"; // Импортируем контекст избранного
+import { useFavorite } from "../../context/FavoriteContext"; 
 
 export const YourCart = () => {
   const {
     cart,
     removeFromCart,
+    clearCart 
   } = useCart();
   
-  const { addToFavorites, removeFromFavorites, favorites } = useFavorite(); // Получаем функции и список избранных из контекста избранного
+  const { addToFavorites, removeFromFavorites, favorites } = useFavorite(); 
 
   const [totalPrice, setTotalPrice] = useState(0);
 
   const handleRemoveFromCart = (id) => {
     removeFromCart(id);
+  };
+
+  const handleRemoveAllFromCart = () => {
+    clearCart(); 
   };
 
   useEffect(() => {
@@ -69,14 +74,17 @@ export const YourCart = () => {
           <div className={`total ${cart.length === 0 ? "empty" : ""}`}>
             <div className="adres">
               <p>Summary</p>
-
               <button className="order">Enter Discount Coupon Here</button>
-
               <hr />
-
               <p className="total__info">
                 Total<span>€{totalPrice.toFixed(2)}</span>
               </p>
+              <button
+                className="order"
+                onClick={handleRemoveAllFromCart}
+              >
+                Remove All
+              </button>
             </div>
           </div>
         </div>
