@@ -3,12 +3,12 @@ import { CiHome } from "react-icons/ci";
 import { SlBasket } from "react-icons/sl";
 import { MdFavoriteBorder } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { useCart } from "../../context/CartContext"; // Импортируем контекст корзины
-import { useFavorite } from "../../context/FavoriteContext"; // Импортируем контекст избранного
+import { useCart } from "../../context/CartContext"; 
+import { useFavorite } from "../../context/FavoriteContext"; 
 
 export const Header = () => {
-  const { cart } = useCart(); // Получаем корзину из контекста корзины
-  const { favorites } = useFavorite(); // Получаем список избранных из контекста избранного
+  const { cart } = useCart(); 
+  const { favorites } = useFavorite(); 
 
   return (
     <header>

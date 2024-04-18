@@ -122,10 +122,10 @@ const Card = () => {
       <div className="container">
         <div className="card__info">
           <div className="crad__info__text">
-            <div className="card__info__title">New Arrivals</div>
-            <div className="card__info__suptitle">
+            <h2 className="card__info__title">New Arrivals</h2>
+            <h2 className="card__info__suptitle">
               Check out the latest products
-            </div>
+            </h2>
           </div>
 
           <div className="select">

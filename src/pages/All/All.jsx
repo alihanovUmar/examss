@@ -10,7 +10,7 @@ import No from "../../assets/images/No results.jpg";
 import { useFavorite } from "../../context/FavoriteContext";
 
 export const All = () => {
-  const { favorites, removeFromFavorites, setFavorites: updateFavorites } = useFavorite();
+  const { favorites, setFavorites: updateFavorites } = useFavorite();
   const { datas, setDatas, cart, setCart } = useStore(
     (state) => ({
       datas: state.datas,
@@ -77,7 +77,7 @@ export const All = () => {
   };
 
   return (
-    <div>
+    <section>
       <Search setInputVal={handleSearch} />
       <div className="container">
         <div className="btn">
@@ -144,6 +144,6 @@ export const All = () => {
           </ul>
         )}
       </div>
-    </div>
+    </section>
   );
 };

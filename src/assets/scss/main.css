@@ -1086,45 +1086,84 @@ header .header__left__right .header__right ul {
   border-radius: 10px;
 }
 
-.adminka {
-  width: 100%;
-  background: rgb(228, 228, 228);
-  background: linear-gradient(349deg, rgb(228, 228, 228) 40%, rgba(174, 174, 174, 0.818) 60%);
-  box-shadow: 0px 0px 15px 2px linear-gradient(349deg, rgba(0, 0, 0, 0.8183648459) 40%, rgb(228, 228, 228) 60%) inset;
-  overflow: hidden;
-}
-.adminka .adminka__left__right .adminka__left {
+.all__btns {
   display: flex;
   align-items: center;
-  justify-content: start;
+  flex-wrap: wrap;
   gap: 20px;
-  width: 230px;
-  padding: 5px;
-  box-sizing: border-box;
-  border: 2px solid rgba(0, 0, 0, 0.05);
-  border-radius: 20px;
-  background: #f0f8ff;
 }
-.adminka .adminka__left__right .adminka__left .info {
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  justify-content: center;
+  align-items: center;
 }
-.adminka .adminka__left__right .adminka__left .info .profil__name {
+.modal .modal-content {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+.modal .modal-content h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-overflow: ellipsis;
   color: rgb(0, 0, 0);
   font-family: Inter;
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 24px;
-  letter-spacing: 0%;
-  text-align: left;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
 }
-.adminka .adminka__left__right .adminka__left .adminka__profil {
-  width: 50px;
-  height: 50px;
-  background: #000;
-  border-radius: 50%;
+.modal .modal-content .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #999;
 }
+.modal .modal-content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.modal .modal-content form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modal .modal-content input[type=text],
+.modal .modal-content input[type=number],
+.modal .modal-content textarea {
+  width: 300px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.modal .modal-content .modal__btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.modal .modal-content .modal__btn:hover {
+  background-color: #0056b3;
+}
+
 .cart__left__right {
   display: flex;
   align-items: start;

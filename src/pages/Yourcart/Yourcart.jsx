@@ -35,7 +35,7 @@ export const YourCart = () => {
   };
 
   return (
-    <div>
+    <section>
       <div className="container">
         <div className="cart__left__right">
           <ul className="cart__left">
@@ -81,7 +81,7 @@ export const YourCart = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

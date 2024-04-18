@@ -1,5 +1,6 @@
 import React from "react";
 import { useFavorite } from "../../context/FavoriteContext";
+import { BiSolidCartDownload } from "react-icons/bi";
 import { MdDeleteForever } from "react-icons/md";
 import { useCart } from "../../context/CartContext";
 
@@ -22,7 +23,9 @@ export const Favorites = () => {
   };
 
   const handleToggleFavorite = (item) => {
-    const isFavorite = favorites.some((favoriteItem) => favoriteItem.id === item.id);
+    const isFavorite = favorites.some(
+      (favoriteItem) => favoriteItem.id === item.id
+    );
     if (isFavorite) {
       removeFromFavorites(item.id);
     } else {
@@ -31,7 +34,7 @@ export const Favorites = () => {
   };
 
   return (
-    <div>
+    <section>
       <div className="container">
         <div className="cart__left__right">
           <ul className="cart__left">
@@ -55,7 +58,7 @@ export const Favorites = () => {
                       className="cart__btn"
                       onClick={() => handleAddToCart(item)}
                     >
-                      Add to Cart
+                      <BiSolidCartDownload />
                     </button>
                   </div>
                 </div>
@@ -64,6 +67,6 @@ export const Favorites = () => {
           </ul>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

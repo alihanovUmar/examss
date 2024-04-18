@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Adminka } from "../Adminka/Adminka";
+import {Adminka} from "../Adminka/Adminka"; 
 import loginImg from "../../../assets/images/login.png";
 
 const Login = () => {
